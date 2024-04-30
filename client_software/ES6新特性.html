@@ -1,0 +1,54 @@
+<!--
+ * @Author: pwangfeng 2199066249@qq.com
+ * @Date: 2024-04-02 11:02:31
+ * @LastEditors: pwangfeng 2199066249@qq.com
+ * @LastEditTime: 2024-04-02 11:04:15
+ * @FilePath: \Clint_sorftWare\client_software\ES6新特性.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // //使用解构赋值实现两数交换
+        // let a = 12;
+        // let b = 21;
+        // [a, b] = [b, a];
+        // console.log(a, b);
+        // console.log("-------------------")
+        //     //使用解构赋值，实现将一个对象的属性值付给对应的变量
+        // let catData = {
+        //     id: 1001,
+        //     type: "狸花猫",
+        //     name: "小花"
+        // };
+        // let {
+        //     id,
+        //     type,
+        //     name
+        // } = catData;
+        // console.log(catData);
+        //使用模板字符串拼接出“你好，xx,今天是星期x”
+        let name = "小潘";
+        let day = "二";
+        console.log(`你好，${name}，今天是星期${day}`);
+        var arr = [1, 2, 3, 4, 5, 6]
+        arr.forEach(function(v) {
+            console.log(v);
+        })
+        console.log("----------------------")
+        for (a in arr) {
+            console.log(a);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!--
+ * @Author: pwangfeng 2199066249@qq.com
+ * @Date: 2024-04-25 10:45:10
+ * @LastEditors: pwangfeng 2199066249@qq.com
+ * @LastEditTime: 2024-04-30 10:53:05
+ * @FilePath: \client_software\sy_04_广告.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            width: 1000px;
+            height: 1600px;
+            margin: auto;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            /* 渐变色 */
+            background: linear-gradient(to right, #a2d8eb, #ff99cc);
+        }
+        
+        .advertisement-left {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            display: none;
+            width: 150px;
+            height: 300px;
+            background-color: #fff;
+        }
+        
+        .advertisement-left img {
+            width: 300px;
+        }
+        
+        .advertisement-right {
+            position: fixed;
+            top: 10px;
+            right: 0;
+            display: none;
+            width: 150px;
+            height: 300px;
+            background-color: #fff;
+        }
+        
+        .advertisement-right img {
+            width: 300px;
+        }
+        
+        .advertisement-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 1200px;
+            width: 150px;
+            height: 300px;
+            display: none;
+            background-color: #fff;
+        }
+        
+        .advertisement-bottom img {
+            width: 300px;
+        }
+    </style>
+    <title>实验四：制作web页面广告</title>
+</head>
+
+<body>
+    <!-- 定宽的，居中的网页部分 -->
+    <div class="container">
+        <h1>网页标题</h1>
+        <p>网页内容</p>
+        <img src="./img/sy4_03.gif" alt="图片描述">
+    </div>
+    <!-- 广告部分1 左右对联广告 用户页面展示之后固定在页面上 广告可以关闭 -->
+    <div class="advertisement-left">
+        <!-- SVG图标 -->
+        <svg @click="closePopup1" t="1714014555624" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5521" width="16" height="16" style="position: absolute; top: 0; right: 0;">
+            <path d="M86.016 0l-83.968 70.65599999c149.504 111.61599999 288.768 239.616 411.136 367.61600001-187.392 188.92800001-334.336 374.78400001-411.648 449.536l159.744 133.632c56.832-117.248 180.224-294.912 345.6-481.28 165.37600001 187.392 289.28 366.08 346.112 483.84 0 0 155.648-165.376 169.472-139.776C962.56 816.64 816.12799999 620.032 619.52 418.816c112.64-115.712 239.10399999-230.4 374.272-331.264l-36.864-68.60799999c-153.088 76.288-299.008 189.44-430.08 309.75999999-132.096-125.44-281.6-244.736-440.832-328.704z" fill="#d81e06" p-id="5522"></path>
+        </svg>
+        <!-- 图片 -->
+        <img src="./img/sy4_04.gif" alt="广告2" style="max-width: 100%;">
+    </div>
+    <div class="advertisement-right">
+        <!-- 图片 -->
+        <img src="./img/sy4_01.webp" alt="广告1" style="max-width: 100%; position: relative;">
+        <!-- SVG图标 -->
+        <svg @click="closePopup2" t="1714014555624" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5521" width="16" height="16" style="position: absolute; top: 0; right: 0;">
+            <path d="M86.016 0l-83.968 70.65599999c149.504 111.61599999 288.768 239.616 411.136 367.61600001-187.392 188.92800001-334.336 374.78400001-411.648 449.536l159.744 133.632c56.832-117.248 180.224-294.912 345.6-481.28 165.37600001 187.392 289.28 366.08 346.112 483.84 0 0 155.648-165.376 169.472-139.776C962.56 816.64 816.12799999 620.032 619.52 418.816c112.64-115.712 239.10399999-230.4 374.272-331.264l-36.864-68.60799999c-153.088 76.288-299.008 189.44-430.08 309.75999999-132.096-125.44-281.6-244.736-440.832-328.704z" fill="#d81e06" p-id="5522"></path>
+        </svg>
+    </div>
+    <div class="advertisement-bottom" style="position: relative;">
+        <!-- 图片 -->
+        <img src="./img/sy4_02.gif" alt="广告3" style="max-width: 100%;">
+
+        <!-- SVG图标 -->
+        <svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="position: absolute; top: 0; right: 0;">
+          <path @click="closePopup3" d="M86.016 0l-83.968 70.65599999c149.504 111.61599999 288.768 239.616 411.136 367.61600001-187.392 188.92800001-334.336 374.78400001-411.648 449.536l159.744 133.632c56.832-117.248 180.224-294.912 345.6-481.28 165.37600001 187.392 289.28 366.08 346.112 483.84 0 0 155.648-165.376 169.472-139.776C962.56 816.64 816.12799999 620.032 619.52 418.816c112.64-115.712 239.10399999-230.4 374.272-331.264l-36.864-68.60799999c-153.088 76.288-299.008 189.44-430.08 309.75999999-132.096-125.44-281.6-244.736-440.832-328.704z" fill="#d81e06"></path>
+        </svg>
+    </div>
+
+    <script>
+        // 获取弹窗广告元素
+        const ad1 = document.querySelector('.advertisement-left');
+        const ad2 = document.querySelector('.advertisement-right');
+        const ad3 = document.querySelector('.advertisement-bottom');
+        //获取关闭按钮元素
+        const closeBtn1 = document.querySelector('.advertisement-left svg');
+        const closeBtn2 = document.querySelector('.advertisement-right svg');
+        const closeBtn3 = document.querySelector('.advertisement-bottom svg');
+        /* 关闭左边 */
+        closeBtn1.onclick = function() {
+            console.log("点击了关闭左边");
+            //隐藏广告
+            ad1.style.display = 'none';
+
+        }
+
+        /* 关闭右边 */
+        closeBtn2.onclick = function() {
+            console.log("点击了关闭右边");
+            ad2.style.display = 'none';
+        }
+
+        /* 关闭下边 */
+        closeBtn3.onclick = function() {
+
+            ad3.style.display = 'none';
+        }
+
+
+        /* 1.5秒弹出弹窗广告 */
+        window.onload = function() {
+
+                setTimeout(function() {
+                    ad1.style.display = 'block';
+                    //缓慢移动
+                    ad2.style.display = 'block';
+                    //缓慢移动
+                    ad3.style.display = 'block';
+                    //缓慢移动                
+                }, 500);
+
+            }
+            // 设置定时器
+        let bottom = -100;
+        console.log(bottom);
+        var timer = setInterval(popup, 30);
+
+        function popup() {
+            if (bottom >= 0) {
+                clearInterval(timer);
+            } else {
+                bottom += 1;
+                console.log(bottom);
+                ad3.style.bottom = `${bottom}px`;
+                ad3.style.position = 'fixed';
+            }
+        }
+    </script>
+</body>
+
+</html>

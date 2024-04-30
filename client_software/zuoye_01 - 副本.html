@@ -1,0 +1,71 @@
+<!--
+ * @Author: pwangfeng 2199066249@qq.com
+ * @Date: 2024-02-29 14:50:29
+ * @LastEditors: pwangfeng 2199066249@qq.com
+ * @FilePath: \Clint_sorftWare\zuoye_01.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打印三角形、平行四边形、菱形</title>
+</head>
+
+<body>
+    <!--219970522 潘望凤-->
+    <script>
+        //n表示图形的行数
+        var n ;
+		n = prompt("请输入图形行数:");
+        // 三角形
+       function pri(n){
+		   document.write("三角形：<br>");
+		   for (let i = 0; i < n; i++) {
+		       for (let j = 0; j < n - i; j++) {
+		           document.write("&nbsp;");
+		       }
+		       for (let k = 0; k <= i; k++) {
+		           document.write(` * `);
+		       }
+		       document.write("<br>");
+		   }
+		   //平行四边形
+		   document.write("平行四边形：<br>");
+		   for (let i = 0; i < n; i++) {
+		       for (let k = 0; k <= n - i; k++) {
+		           document.write(" &nbsp;");
+		       }
+		       for (let j = 0; j < n; j++) {
+		           document.write(` * `);
+		       }
+		       document.write("<br>");
+		   }
+		   //菱形
+		   document.write("菱形：<br>");
+		   for (let i = 0; i < n / 2; i++) {
+		       for (j = 0; j <= 3 - i; j++) {
+		           document.write("&nbsp;&nbsp;");
+		       }
+		       for (k = 1; k <= 2 * i - 1; k++) {
+		           document.write(`* `);
+		       }
+		       document.write("<br>");
+		   }
+		   for (let i = n / 2; i > 0; i--) {
+		       for (j = 0; j <= 3 - i; j++) {
+		           document.write("&nbsp;&nbsp;");
+		       }
+		       for (k = 0; k <= 2 * i - 1; k++) {
+		           document.write(`* `);
+		       }
+		       document.write("<br>");
+		   }
+	   }
+	   pri(n);
+    </script>
+</body>
+
+</html>

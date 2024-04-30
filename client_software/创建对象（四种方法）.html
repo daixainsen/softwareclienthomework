@@ -1,0 +1,96 @@
+<!--
+ * @Author: pwangfeng 2199066249@qq.com
+ * @Date: 2024-03-26 10:47:42
+ * @LastEditors: pwangfeng 2199066249@qq.com
+ * @LastEditTime: 2024-03-28 10:43:03
+ * @FilePath: \Clint_sorftWare\html_03.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用四种方法创建对象</title>
+</head>
+
+<body>
+    <script>
+        // //用字面量方式创建对象   适合属性不多，方法简单场景
+        // var Cat = {
+        //     name: '狸花猫',
+        //     sex: '男',
+        //     eat: function() {
+        //         console.log(this.name + "正在吃饭");
+        //     }
+        // }
+        // Cat.eat();
+        // console.log(Cat.name);
+        // console.log("--------------------");
+        // //使用 Object创建对象       缺点：属性和方法都是Object的成员，不够“个性”
+        // var cat2 = new Object(); //小括号可以省略，但是不推荐
+        // cat2.name = "狸花猫";
+        // cat2.eat = function() {
+        //     console.log(this.name + "正在吃饭！！");
+        // }
+        // console.log(cat2);
+        // cat2.eat();
+        // console.log("--------------------");
+        // // 工厂方法模式：用一个方法创造一个想要的产品，
+        // //根据方法参数制造出一个产品，至于工厂内部如何制造产品并不重要，只需要提供原产料即可
+        // //用工厂模式创建对象   缺点：对象的方法是一个函数，会导致每次调用方法都会新创建一个函数对象，造成额外的成本开销。
+        // function createCat(name, sex, eat) {
+        //     var tempCat = new Object();
+        //     tempCat.name = name;
+        //     tempCat.sex = sex;
+        //     tempCat.eat = eat;
+        //     return tempCat;
+        // }
+        // var cat3 = createCat("奶牛猫", "男", new Function("console.log(this.name+'正在吃东西')"));
+        // console.log(cat3);
+        // cat3.eat();
+        // console.log("--------------------");
+        // //使用构造函数方式创建对象
+        // function CAT(name, sex) {
+        //     this.name = name;
+        //     this.sex = sex;
+        //     this.eat = function() {
+        //         console.log(this.name + "正在吃东西！！！");
+        //     }
+        // }
+        // var cat4 = new CAT("狸花猫", "男");
+        // console.log(cat4);
+        // cat4.eat();
+        // console.log("--------------------");
+        //使用原型创建对象
+        // function Cat() {
+
+        // }
+        // Cat.prototype.name = "狸花猫";
+        // Cat.prototype.sex = "男";
+        // Cat.prototype.eat = function() {
+        //     console.log(this.name + "正在吃饭");
+        // }
+        // var cat = new Cat();
+        // console.log(cat);
+        // cat.eat();
+        //用经典组合的方式创建
+
+        //使用构造函数方式创建对象
+        function Cat(name, sex) {
+            this.name = name;
+            this.sex = sex;
+
+        }
+        // //原型创建方法
+        // Cat.prototype.eat = function() {
+        //     console.log(this.name + "正在吃饭");
+        // }
+        // var cat5 = new Cat("狸花猫", "男");
+        // console.log(cat5);
+        // cat5.eat();
+    </script>
+</body>
+
+</html>

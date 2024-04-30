@@ -1,0 +1,105 @@
+<!--
+ * @Author: pwangfeng 2199066249@qq.com
+ * @Date: 2024-04-16 11:57:43
+ * @LastEditors: pwangfeng 2199066249@qq.com
+ * @LastEditTime: 2024-04-17 14:11:51
+ * @FilePath: \client_software\task3.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>让坦克开起来</title>
+    <style type="text/css">
+        input {
+            font-size: 26px;
+            margin-top: 20px;
+        }
+        
+        body {
+            background-image: url(./img/grassland.png);
+        }
+        
+        #mytank {
+            /* 相对于页面窗口 */
+            /* position: relative; */
+            /* 父容器 */
+            position: absolute;
+            left: 10px;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="mytank" src="./img/right.png" />
+    <script>
+        // //弹出提示框：禁用右键，禁用F12 
+        alert("禁用右键，禁用F12");
+        // //弹出提示框：使用键盘的WSAD或者上下左右键，操纵坦克向相应的方向移动。
+        alert("使用键盘的WSAD或者上下左右键，操纵坦克向相应的方向移动。");
+
+        //获取坦克
+        var tank = document.getElementById("mytank");
+        //获取屏幕宽度
+        var screenWidth = window.innerWidth;
+        //获取屏幕高度
+        var screenHeight = window.innerHeight;
+        //禁用右键
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        // 禁用F12
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode == 123) {
+                event.preventDefault();
+            }
+        });
+        // 使用键盘的WSAD或者上下左右键，操纵坦克向相应的方向移动。
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode == 87 || event.keyCode == 38) {
+                // 向上移动图片
+                //添加过渡动画，使转向更加流畅 添加转向角度
+                tank.style.transform = "rotate(-90deg)";
+                tank.style.transition = "all 0.5s ease";
+                // tank.setAttribute("src", "./img/up.png"); //更改其src属性，将其设置为新图像的路径
+                let top = tank.offsetTop - 100;
+                if (top >= 0) { // 判断图片顶部是否超出边界
+                    tank.style.top = top + "px";
+                }
+            } else if (event.keyCode == 68 || event.keyCode == 39) {
+                // 向右移动图片
+                // tank.setAttribute("src", "./img/right.png"); //更改其src属性，将其设置为新图像的路径
+                tank.style.transform = "rotate(0deg)";
+                tank.style.transition = "all 0.5s ease";
+                let right = tank.offsetLeft + 100 + tank.clientWidth;
+                if (right <= screenWidth) { // 判断图片右侧是否超出边界
+                    tank.style.left = tank.offsetLeft + 100 + "px";
+                }
+            } else if (event.keyCode == 83 || event.keyCode == 40) {
+                // 向下移动图片
+                // tank.setAttribute("src", "./img/down.png"); //更改其src属性，将其设置为新图像的路径
+                tank.style.transform = "rotate(90deg)";
+                tank.style.transition = "all 0.5s ease";
+                let bottom = tank.offsetTop + 100 + tank.clientHeight;
+                if (bottom <= screenHeight) { // 判断图片底部是否超出边界
+                    tank.style.top = tank.offsetTop + 100 + "px";
+                }
+            } else if (event.keyCode == 65 || event.keyCode == 37) {
+                // 向左移动图片
+                // tank.setAttribute("src", "./img/left.png"); //更改其src属性，将其设置为新图像的路径
+                tank.style.transform = "rotate(180deg)";
+                tank.style.transition = "all 0.5s ease";
+                let left = tank.offsetLeft - 100;
+                if (left >= 0) { // 判断图片左侧是否超出边界
+                    tank.style.left = left + "px";
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

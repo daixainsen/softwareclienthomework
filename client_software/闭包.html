@@ -1,0 +1,69 @@
+<!--
+ * @Author: pwangfeng 2199066249@qq.com
+ * @Date: 2024-03-28 20:28:33
+ * @LastEditors: pwangfeng 2199066249@qq.com
+ * @LastEditTime: 2024-04-26 01:09:10
+ * @FilePath: \Clint_sorftWare\client_software\闭包.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+</head>
+
+<body>
+    <script>
+        /*
+                        
+                        这里的 createCounter 函数会返回一个新的函数 increaseCount，
+                        它可以访问 createCounter 中定义的局部变量 count。
+                        每当调用 increaseCount 时，它会将 count 的值加 1，并将结果打印在控制台上。
+                        我们将 createCounter 的返回值赋值给 counter，这样我们就可以调用 counter 函数来增加计数器的值了。
+                        由于 counter 是一个闭包，它可以记住 createCounter 中的变量，所以每次调用 counter 时，它都会使用同一个计数器。
+                        
+                        */
+        function createCounter() {
+            let count = 0;
+
+            function increaseCount() {
+                count++;
+                console.log(count);
+            }
+
+            return increaseCount;
+        }
+        const counter = createCounter();
+
+        counter(); // 1
+        counter(); // 2
+        counter(); // 3
+    </script>
+    <script>
+        fetch('http:47.108.214.56/api/data', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer YourAccessToken'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    </script>
+</body>
+
+</html>

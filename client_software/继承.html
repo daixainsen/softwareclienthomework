@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承（五种继承）</title>
+</head>
+
+<body>
+    <script>
+        //借用构造函数   （经典继承）
+        function Person(name) {
+            this.name = name;
+        }
+
+        function worker(name, salary) {
+            Person.call(this, name);
+            this.salary = salary;
+        }
+        var obj3 = new worker("赵云", 100);
+
+        //         方式二:组合继承（伪经
+        // 典继承)
+        // ·利用原型链实现对原型对象属性和方法的继承·借用构造函数实现实例对象属性和方法的继承
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.run = function() {
+            console.log("跑");
+        }
+
+        function worker(name, salary) {
+            Person.call(this, name);
+            this.salary = salary;
+        }
+        worker.prototype = new Person();
+        var obj4 = new worker("赵云", 100);
+        console.log(obj4);
+
+        // 方式三︰原型式继承 使用Object.create()，获得某对象
+        // 的原型
+        var person1 = {
+            name: "刘备",
+            sex: "男",
+            run: function() {
+                console.log("跑");
+            }
+        }
+        var person2 = Object.create(person1);
+        console.log(person2);
+
+
+        // 方式四:寄生式继承利用一个工厂函数改造一个对象的属性和方法，从而获得新又对象
+        function createNewPerson(person) {
+            var temp = new object(person);
+            temp.jump = function() {
+                console.log("跳");
+            }
+            return temp;
+        }
+        var person1 = {
+            name: "刘备",
+            sex: "男",
+            run: function() {
+                console.log("跑");
+            }
+        }
+        var person2 = createNewPerson(person1);
+        console.log(person2);
+    </script>
+
+</body>
+
+</html>

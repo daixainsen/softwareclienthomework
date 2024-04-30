@@ -1,0 +1,135 @@
+<!--
+ * @Author: pwangfeng 2199066249@qq.com
+ * @Date: 2024-03-19 10:31:52
+ * @LastEditors: pwangfeng 2199066249@qq.com
+ * @LastEditTime: 2024-03-19 14:42:52
+ * @FilePath: \Clint_sorftWare\js\sy_02.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验二</title>
+</head>
+
+<body>
+    <!-- 219970522 潘望凤 -->
+    <script>
+        // 1. JavaScript提供了一些内置函数，用以实现对数据类型的转换、判断等效
+        // 果，请运行如下代码，记录其结果，并思考原因。
+
+        // (1)Number()) 布尔型变量 true=1，false=0; null型变量=0; undfined做任何计算都等于undefined
+        console.log("1.(1)")
+        console.log(Number(true), Number(null), +undefined);
+        // (2) Boolean()  字符型变量不为空转换为布尔型变量均为true ; 
+        //数值型的变量>0 均为true ; null型变量转换为布尔型值为false; !undefined为true ！！undefined为false
+        console.log("1.(2)")
+        console.log(Boolean(' 100 '), Boolean(100), Boolean(null), !!undefined);
+        // (3) parselnt()  parseInt()会将数值或字符转换为整数
+        console.log("1.(3)")
+            // console.log(parseInt(123.6), parseInt(0b1011011), parseInt(OX2A), parseInt(OX2A, 8));
+            // (4) parseFloat()
+        console.log("1.(4)")
+        console.log(parseFloat('123.6'), parseFloat('100px'), parseFloat(10));
+        // (5) eval)
+        console.log("1.(5)")
+        console.log(eval('87*99+2'));
+        // (6) isNaNO
+        console.log("1.(6)")
+        console.log(isNaN(null), isNaN('123'), isNaN('abc'), isNaN('a1b2c3'));
+
+        //2.Array在JavaScript中表示数组,可以使用字面量和构造函数两种方式创建。
+        // (1)运行如下代码，写出运行结果。
+        console.log("2.(1)")
+        var arr1 = [];
+        console.log(arr1, arr1.length);
+        var arr2 = [1, 2, 3];
+        console.log(arr2[0], arr2.length);
+        var arr3 = new Array();
+        console.log(arr3[1], arr3.length);
+        // (2)现在需要将数组arr2  的第一个元素去掉，请查阅如下地址的资料，并
+        // 写出实现的代码。 https://www.runoob.com/jsref/jsref-obj-array.html
+        console.log("2.(2)")
+        arr2.shift();
+        console.log(arr2);
+
+        // 3. Date 在 JavaScript  中表示日期和时间，使用 new  Date()即可获得当前的 日期和时间，
+        // Date对象有很多与日期和时间相关的方法，请查阅如下地 址的资料： https://www.runoob.com/jsref/jsref-obj-date.html       , 写出代码
+        // 显示目前是几点几分?
+        console.log("3")
+        var date = new Date();
+        console.log(`
+            ${date.getHours()}:${date.getMinutes()}
+        `)
+
+
+        //4.RegExp     在 JavaScript  中表示正则表达式
+        console.log("4.1")
+            // (1)运行如下代码，体验使用字面量方式创建，写出运行结果
+        var reg1 = /^\d{4}$/;
+        console.log(reg1.test('1234'),
+                reg1.test('1a34'),
+                reg1.test('12345'))
+            // (2)运行如下代码，体验使用构造函数方式创建，写出运行结果
+        console.log("4.2")
+        var reg2 = new RegExp("^[sp]\\d{1,4}$", "i");
+        console.log(reg2.test('p123'),
+                reg2.test('1234'),
+                reg2.test('S10'))
+            // (3)11 位手机号码中，前面3位数字表示的是网络识别码，而往后的第4 位数字开始到第7位数字表示的是该号码所在地区的编码，而最后4 位数字则是每一位用户随机分配得到的号码。
+            //比如中国电信的常用号码段有133、153、189、180,查阅如下地址的资料，
+            // https://www.runoob.com/jsref/jsref-obj-regexp.html, 编写一个能校
+            // 验手机号是否是中国电信的正则表达式，写出代码和测试案例。
+        console.log("4.3")
+            // 中国电信手机号正则表达式
+        var chinaTelecomRegex = /^(133|153|189|180)\d{8}$/;
+
+        // 测试案例
+        var phoneNumber1 = '13312345678';
+        var phoneNumber2 = '18887654321';
+
+        console.log(chinaTelecomRegex.test(phoneNumber1), chinaTelecomRegex.test(phoneNumber2)); // 输出 true 输出 false
+
+
+        // 5.String 在基本数据类型 string 的对象表达，它拥有更多的对字符串进行操作的属性和方法。、
+        // (1)目前有一个 QQ 邮箱的字符串，需要提取其QQ 号码，请查阅如下地 址的资料， https://www.runoob.com/jsref/jsref-obj-string.html   , 编
+        // 写并写出代码和测试案例。
+        console.log(5.1);
+        //给出一个合法qq邮箱
+        var qq = "2199066249@qq.com";
+        //匹配字符 @ 所在的下标
+        var index = qq.search("@");
+        //提取下标为0-index的字符串
+        console.log(qq.substr(0, index))
+
+
+        //6.Math  对象有很多与数学相关的属性和方法，可以直接使用。请查阅如下
+        // 地址的资料， https://www.runoob.com/jsref/isref-obj-math.html, 编写
+        // 代码实现随机产生1、2、3中的任意一个整数，写出测试案例。
+        console.log("6:")
+        console.log(Math.floor((Math.random() * 3) + 1));
+
+        // 7. 思考如下代码的运行结果，运行验证。 x=2,y=2,z=3
+        console.log("7:")
+        var x = 1;
+
+        function A(y) {
+            var x = 2;
+
+            function B(z) {
+
+                console.log(x + y + z);
+            }
+            return B;
+
+        }
+        C = A(2);
+        C(3);
+    </script>
+</body>
+
+</html>

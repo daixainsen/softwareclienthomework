@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建一个动物的对象继承动物，实现猫的对象</title>
+</head>
+
+<body>
+    <script>
+        //使用构造函数实现继承
+        //构造方法
+        function animal1(name) {
+            this.name = name;
+        }
+
+        function cat1(name, type) {
+            animal1.call(this, name);
+            this.type = type;
+        }
+        var obj1 = new cat1("小花", "三花猫")
+        console.log(obj1);
+    </script>
+</body>
+
+</html>
